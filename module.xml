@@ -1,0 +1,103 @@
+<!-- module in activity_main.xml -->
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+
+	android:padding="16dp"
+
+	android:orientation="vertical"
+	tools:context="com.hfad.myfirstapp.MainAcitivity">
+
+	<TextView
+		android:id="@+id/brands"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="center"
+		android:layout_margin="16dp"
+		android:text="@string/brands" />
+	<!-- match_parent: match ancester's length -->
+	<!-- wrap-content: match the words length in the component -->
+	<!-- layout_gravity: make component in the specific posistion -->
+	<!-- gravity: make words inside in the specific position -->
+	<Button
+		android:id="@+id/find_beer"
+		android:layout_height="match_parent" 
+		android:layout_width="wrap_content"
+		android:layout_gravity="center"
+		android:layout_margin="16dp"
+		android:text="@string/find_beer"
+		androud:onClick="onClickFindBeer" />
+
+	<Spinner
+		android:id="@+id/color"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="40dp"
+		android:layout_gravity="center"
+		android:layout_margin="16dp"/>
+
+	ss<EditText
+        android:id="@+id/message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:hint="@string/hint"
+        android:ems="10"/>
+</LinearLayout>
+
+<!-- Module in strings.xml -->
+<resources>
+	<string name="string_name">string content</string>
+	<string-array name="string_array_name">
+		<item>str1</item>
+		<item>str2</item>
+		<item>str3</item>
+	</string-array>
+</resources>
+
+<!-- module in AndroidManifest.xml -->
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.testing">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <activity android:name=".ReceiveMessageAcitivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!-- Here is an example of accept data with MIME types of text/plian or image -->
+        <activity android:name="ShareActivity">
+        	<intent-filter>
+        		<!-- this tells activity can handle Android_SEND -->
+        		<action android:name="android.intent.actin.SEND"/>
+        		<!-- intent-filter must include DEFAULT or it wont be able to receive implicit intent -->
+        		<catgory android:name="android.intent.category.DEFAULT"/>
+        		<!-- data types -->
+        		<data android:mimeType="text/plain"/>
+        		<data android:mimeType="image/*"/>
+        	</intent-filter>
+        </activity>
+    </application>
+
+</manifest>
